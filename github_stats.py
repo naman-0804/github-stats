@@ -259,8 +259,6 @@ class Stats(object):
         )
         lines_changed = await self.lines_changed
         return f"""Name: {await self.name}
-Stargazers: {await self.stargazers:,}
-Forks: {await self.forks:,}
 All-time contributions: {await self.total_contributions:,}
 Repositories with contributions: {len(await self.all_repos)}
 Lines of code added: {lines_changed[0]:,}
