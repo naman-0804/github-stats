@@ -262,6 +262,7 @@ class Stats(object):
         All-time contributions: {await self.total_contributions:,}
         Repositories with contributions: {len(await self.all_repos)}
         Total stars ⭐: {await self.stargazers:,}
+        Total forks 🍴: {await self.forks:,}
         Lines of code added: {lines_changed[0]:,}
         Lines of code deleted: {lines_changed[1]:,}
         Lines of code changed: {lines_changed[0] + lines_changed[1]:,}
