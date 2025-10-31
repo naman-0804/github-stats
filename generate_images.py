@@ -37,7 +37,7 @@ async def generate_overview(s: Stats) -> None:
     output = re.sub("{{ contributions }}", f"{await s.total_contributions:,}",
                     output)
     output = re.sub(r"{{ stars }}", f"{await s.stargazers:,}", output)
-
+    output = re.sub(r"{{ forks }}", f"{await s.forks:,}", output)
     changed = (await s.lines_changed)[0] + (await s.lines_changed)[1]
     output = re.sub("{{ lines_changed }}", f"{changed:,}", output)
     output = re.sub("{{ views }}", f"{await s.views:,}", output)
@@ -121,4 +121,5 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
