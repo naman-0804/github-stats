@@ -249,24 +249,26 @@ class Stats(object):
         self._lines_changed = None
         self._views = None        
 
-    async def to_str(self) -> str:
-        """
-        :return: summary of all available statistics
-        """
-        languages = await self.languages_proportional
-        formatted_languages = "\n  - ".join(
-            [f"{k}: {v:0.4f}%" for k, v in languages.items()]
-        )
-        lines_changed = await self.lines_changed
-        return f"""Name: {await self.name}
+async def to_str(self) -> str:
+    """
+    :return: summary of all available statistics
+    """
+    languages = await self.languages_proportional
+    formatted_languages = "\n  - ".join(
+        [f"{k}: {v:0.4f}%" for k, v in languages.items()]
+    )
+    lines_changed = await self.lines_changed
+    return f"""Name: {await self.name}
 All-time contributions: {await self.total_contributions:,}
 Repositories with contributions: {len(await self.all_repos)}
+Total stars ⭐: {await self.stargazers:,}
 Lines of code added: {lines_changed[0]:,}
 Lines of code deleted: {lines_changed[1]:,}
 Lines of code changed: {lines_changed[0] + lines_changed[1]:,}
-Project page views: {await self.views:,}
+Project page views (14 days): {await self.views:,}
 Languages:
   - {formatted_languages}"""
+
 
     async def get_stats(self) -> None:
         """
