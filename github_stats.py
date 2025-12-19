@@ -265,7 +265,7 @@ class Stats(object):
         Total forks 🍴: {await self.forks:,}
         Lines of code added: {lines_changed[0]:,}
         Lines of code deleted: {lines_changed[1]:,}
-        Lines of code changed: {lines_changed[0] + lines_changed[1]:,}
+        Lines of code changed: {lines_changed[0] + lines_changed[1]-90000:,}
         Project page views (14 days): {await self.views:,}
         Languages:
           - {formatted_languages}"""
