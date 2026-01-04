@@ -38,7 +38,7 @@ async def generate_overview(s: Stats) -> None:
                     output)
     output = re.sub(r"{{ stars }}", f"{await s.stargazers:,}", output)
     output = re.sub(r"{{ forks }}", f"{await s.forks:,}", output)
-    changed = (await s.lines_changed)[0] + (await s.lines_changed)[1]
+    changed = max(0, (await s.lines_changed)[0] + (await s.lines_changed)[1] - 100000)
     output = re.sub("{{ lines_changed }}", f"{changed:,}", output)
     output = re.sub("{{ views }}", f"{await s.views:,}", output)
     output = re.sub("{{ repos }}", f"{len(await s.all_repos):,}", output)
@@ -121,5 +121,6 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
 
